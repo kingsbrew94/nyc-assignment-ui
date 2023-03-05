@@ -36,7 +36,7 @@
             {{ item.price }}
           </div>
           <div  class="col-4 q-py-md" style="font-size:large;">
-            {{ item.name }}
+            {{ item.description }}
           </div>
           <div class="col-auto col-1 q-py-md">
             <q-btn dense color="blue" flat icon="create" @click="editPrompt = updatePrompt(index)" label="Update"/>
@@ -145,10 +145,10 @@ export default defineComponent({
       toDeleteProduct: '',
       products: [
         {
-          id: "",
-          name: "",
+          id: '',
+          name: '',
           price: 0,
-          description: ""
+          description: ''
         }
       ]
     };
@@ -166,7 +166,7 @@ export default defineComponent({
         const data = {name: this.productName,price: this.price, description: this.description};
         axios.post(`${API_BASE_URL}/products`,data)
         .then((res) => {
-          if(res.data.status == 200 && res.data.message === "SUCCESS") {
+          if(res.data.status == 200 && res.data.message === 'SUCCESS') {
             this.getProducts();
           } 
         }).catch((e) => {
@@ -183,7 +183,7 @@ export default defineComponent({
         const data = {name: this.productName,price: this.price, description: this.description};
         axios.put(`${API_BASE_URL}/products/${this.id}`,data)
         .then((res) => {
-          if(res.data.status === 200 && res.data.message === "SUCCESS") {
+          if(res.data.status === 200 && res.data.message === 'SUCCESS') {
             this.getProducts();
           } 
         }).catch((e) => {
@@ -198,7 +198,7 @@ export default defineComponent({
         // delete product
         axios.delete(`${API_BASE_URL}/products/${this.id}`)
         .then((res) => {
-          if(res.data.status === 200 && res.data.message === "SUCCESS") {
+          if(res.data.status === 200 && res.data.message === 'SUCCESS') {
             this.getProducts();
           } 
         }).catch((e) => {
